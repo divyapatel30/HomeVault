@@ -1,0 +1,4 @@
+project_id = "osbxtvbofudxqerqnhjw"
+
+[functions.sync-family-membership]
+verify_jwt = false

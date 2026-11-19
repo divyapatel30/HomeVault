@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | HomeVault</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar">
+
+        <!-- Logo -->
+        <div class="sidebar-logo">
+            <a href="dashboard.html">
+                <img
+                    src="../assets/logo/homevault-logo.png"
+                    alt="HomeVault"
+                >
+            </a>
+        </div>
+
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+
+            <!-- Personal -->
+            <div class="nav-section">
+
+                <div class="nav-section-title">
+                    Personal
+                </div>
+
+                <a
+                    href="#dashboard"
+                    class="nav-item active"
+                    data-page="dashboard"
+                    data-view="dashboard"
+                >
+                    <span class="nav-icon">
+                        <!-- Home -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 10.5 12 3l9 7.5"></path>
+                            <path d="M5.5 9.5V21h13V9.5"></path>
+                            <path d="M9.5 21v-7h5v7"></path>
+                        </svg>
+                    </span>
+
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a
+                    href="#documents"
+                    class="nav-item"
+                    data-page="documents"
+                    data-view="documents"
+                >
+                    <span class="nav-icon">
+                        <!-- Folder -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 6.5A2.5 2.5 0 0 1 5.5 4H10l2 2h6.5A2.5 2.5 0 0 1 21 8.5v9A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5z"></path>
+                        </svg>
+                    </span>
+
+                    <span>My Documents</span>
+                </a>
+
+
+                <a
+                    href="#expiry"
+                    class="nav-item"
+                    data-page="expiry"
+                    data-view="expiry"
+                >
+                    <span class="nav-icon">
+                        <!-- Calendar -->
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3.5" y="5" width="17" height="16" rx="2"></rect>
+                            <path d="M7 3v4"></path>
+                            <path d="M17 3v4"></path>
+                            <path d="M3.5 9h17"></path>
+                            <path d="M8 13h3"></path>
+                            <path d="M13 13h3"></path>
+                            <path d="M8 17h3"></path>
+                        </svg>
+                    </span>
+
+                    <span>Expiry Alerts</span>
+
+                    <span
+                        class="nav-badge hidden"
+                        id="expiryBadge"
+                    >
+                        0
+                    </span>
+                </a>
+
+
+                <a
+                    href="#trash"
+                    class="nav-item"
+                    data-page="trash"
+                    data-view="trash"
+                >
+                    <span class="nav-icon">
+                        <!-- Trash -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 7h16"></path>
+                            <path d="M9 7V4h6v3"></path>
+                            <path d="M6 7l1 14h10l1-14"></path>
+                            <path d="M10 11v6"></path>
+                            <path d="M14 11v6"></path>
+                        </svg>
+                    </span>
+
+                    <span>Trash</span>
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 FAMILY
+            ========================== -->
+            <div
+                class="nav-section family-section"
+                id="familySection"
+            >
+
+                <div class="nav-section-title">
+                    Family
+                </div>
+
+
+                <!-- Shown when user has NO family -->
+                <div id="noFamilyNav">
+
+                    <button
+                        type="button"
+                        class="nav-item nav-button"
+                        id="createJoinFamilyBtn"
+                    >
+
+                        <span class="nav-icon">
+                            <!-- Users plus -->
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="9" cy="8" r="3"></circle>
+                                <path d="M3.5 20c.5-3.5 2.5-5 5.5-5s5 1.5 5.5 5"></path>
+                                <path d="M17 8v6"></path>
+                                <path d="M14 11h6"></path>
+                            </svg>
+                        </span>
+
+                        <span>Create / Join Family</span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- Shown when user HAS a family -->
+                <div
+                    id="hasFamilyNav"
+                    class="hidden"
+                >
+
+                    <a
+                        href="#shared"
+                        class="nav-item"
+                        data-view="shared"
+                    >
+                        <span class="nav-icon">
+                            <!-- Share -->
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="18" cy="5" r="2.5"></circle>
+                                <circle cx="6" cy="12" r="2.5"></circle>
+                                <circle cx="18" cy="19" r="2.5"></circle>
+                                <path d="m8.2 10.8 7.5-4.3"></path>
+                                <path d="m8.2 13.2 7.5 4.3"></path>
+                            </svg>
+                        </span>
+
+                        <span>Shared With Me</span>
+                    </a>
+
+
+                    <a
+                        href="#members"
+                        class="nav-item"
+                        data-view="members"
+                    >
+                        <span class="nav-icon">
+                            <!-- Users -->
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="9" cy="8" r="3"></circle>
+                                <path d="M3.5 20c.5-3.5 2.5-5 5.5-5s5 1.5 5.5 5"></path>
+                                <path d="M16 5.5a3 3 0 0 1 0 5.5"></path>
+                                <path d="M16 15c2.7.3 4.3 1.8 4.7 5"></path>
+                            </svg>
+                        </span>
+
+                        <span>Family Members</span>
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="nav-item nav-button danger-nav"
+                        id="leaveFamilyBtn"
+                    >
+                        <span class="nav-icon">
+                            <!-- Log out -->
+                            <svg viewBox="0 0 24 24">
+                                <path d="M10 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5"></path>
+                                <path d="M14 8l4 4-4 4"></path>
+                                <path d="M18 12H8"></path>
+                            </svg>
+                        </span>
+
+                        <span id="leaveFamilyActionLabel">Leave Family</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Settings -->
+            <div class="nav-section bottom-nav">
+
+                <a
+                    href="#settings"
+                    class="nav-item"
+                    data-view="settings"
+                >
+                    <span class="nav-icon">
+                        <!-- Settings -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9.7 2.8h4.6l.5 2.1a7.6 7.6 0 0 1 1.6.9l2.1-.6 2.3 4-1.6 1.5a7.5 7.5 0 0 1 0 1.8l1.6 1.5-2.3 4-2.1-.6a7.6 7.6 0 0 1-1.6.9l-.5 2.1H9.7l-.5-2.1a7.6 7.6 0 0 1-1.6-.9l-2.1.6-2.3-4 1.6-1.5a7.5 7.5 0 0 1 0-1.8L3.2 9.2l2.3-4 2.1.6a7.6 7.6 0 0 1 1.6-.9z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </span>
+
+                    <span>Settings</span>
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- Storage -->
+        <div class="storage-card">
+
+            <div class="storage-title">
+                Storage Used
+            </div>
+
+            <div class="storage-value">
+                <strong id="storageUsed">
+                    0 GB
+                </strong>
+
+                <span>
+                    / 10 GB
+                </span>
+            </div>
+
+            <div class="storage-progress">
+                <div
+                    class="storage-progress-fill"
+                    id="storageProgress"
+                ></div>
+            </div>
+
+            <div class="storage-percent">
+                <span id="storagePercent">
+                    0%
+                </span>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN AREA
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- Top bar -->
+        <header class="topbar">
+
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                type="button"
+            >
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 6h16"></path>
+                    <path d="M4 12h16"></path>
+                    <path d="M4 18h16"></path>
+                </svg>
+            </button>
+
+
+            <div class="topbar-spacer"></div>
+
+
+            <!-- User profile -->
+            <button
+                class="profile-button"
+                id="profileButton"
+                type="button"
+            >
+
+                <span
+                    class="profile-avatar"
+                    id="profileAvatar"
+                >
+                    DP
+                </span>
+
+                <span
+                    class="profile-name"
+                    id="profileName"
+                >
+                    User
+                </span>
+
+                <svg
+                    class="profile-chevron"
+                    viewBox="0 0 24 24"
+                >
+                    <path d="m7 10 5 5 5-5"></path>
+                </svg>
+
+            </button>
+
+
+            <!-- Profile dropdown -->
+            <div
+                class="profile-dropdown hidden"
+                id="profileDropdown"
+            >
+
+                <div class="profile-dropdown-header">
+
+                    <strong id="dropdownName">
+                        User
+                    </strong>
+
+                    <span id="dropdownEmail">
+                        email@example.com
+                    </span>
+
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+                <a href="#settings" data-view="settings">
+                    Settings
+                </a>
+
+                <button
+                    type="button"
+                    id="logoutBtn"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- Dashboard content -->
+        <section
+            class="dashboard-content page-view"
+            id="dashboardView"
+            data-view-panel="dashboard"
+        >
+
+            <!-- Welcome -->
+            <div class="welcome-section">
+
+                <div>
+
+                    <h1>
+                        Welcome back,
+                        <span id="welcomeName">
+                            User
+                        </span>
+
+                        <span class="welcome-wave">
+                            👋
+                        </span>
+                    </h1>
+
+                    <p>
+                        All your important documents in one secure place.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-button"
+                    id="uploadDocumentBtn"
+                    type="button"
+                >
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 16V4"></path>
+                        <path d="m7 9 5-5 5 5"></path>
+                        <path d="M5 20h14"></path>
+                    </svg>
+
+                    Upload Document
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =========================
+                 FAMILY INFO
+            ========================== -->
+
+            <div
+                class="family-banner hidden"
+                id="familyBanner"
+            >
+
+                <div class="family-banner-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="9" cy="8" r="3"></circle>
+                        <path d="M3.5 20c.5-3.5 2.5-5 5.5-5s5 1.5 5.5 5"></path>
+                        <path d="M16 5.5a3 3 0 0 1 0 5.5"></path>
+                        <path d="M16 15c2.7.3 4.3 1.8 4.7 5"></path>
+                    </svg>
+
+                </div>
+
+                <div class="family-banner-content">
+
+                    <span class="family-label">
+                        Your Family
+                    </span>
+
+                    <strong id="familyName">
+                        My Family
+                    </strong>
+
+                    <span id="familyRole">
+                        Family Member
+                    </span>
+
+                </div>
+
+                    <a
+                        href="#members"
+                    class="family-banner-link"
+                        data-view="members"
+                >
+                    View Family
+                </a>
+
+            </div>
+
+
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+
+                <!-- Total Documents -->
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <span>
+                            Total Documents
+                        </span>
+
+                        <div class="stat-icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <rect x="5" y="3" width="14" height="18" rx="2"></rect>
+                                <path d="M8 8h8"></path>
+                                <path d="M8 12h8"></path>
+                                <path d="M8 16h5"></path>
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                    <strong
+                        class="stat-number"
+                        id="totalDocuments"
+                    >
+                        0
+                    </strong>
+
+                    <span class="stat-description">
+                        Documents stored
+                    </span>
+
+                </div>
+
+
+                <!-- Expiring -->
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <span>
+                            Expiring Soon
+                        </span>
+
+                        <div class="stat-icon warning-icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 3 22 20H2L12 3z"></path>
+                                <path d="M12 9v5"></path>
+                                <circle cx="12" cy="17" r=".7"></circle>
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                    <strong
+                        class="stat-number"
+                        id="expiringDocuments"
+                    >
+                        0
+                    </strong>
+
+                    <a
+                        href="#expiry"
+                        class="stat-link"
+                        data-view="expiry"
+                    >
+                        View alerts
+                    </a>
+
+                </div>
+
+
+                <!-- Shared -->
+                <div
+                    class="stat-card family-stat"
+                    id="sharedStatCard"
+                >
+
+                    <div class="stat-card-top">
+
+                        <span>
+                            Shared With Family
+                        </span>
+
+                        <div class="stat-icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="9" cy="8" r="3"></circle>
+                                <path d="M3.5 20c.5-3.5 2.5-5 5.5-5s5 1.5 5.5 5"></path>
+                                <circle cx="17" cy="10" r="2.3"></circle>
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                    <strong
+                        class="stat-number"
+                        id="sharedDocuments"
+                    >
+                        0
+                    </strong>
+
+                    <a
+                        href="#shared"
+                        class="stat-link"
+                        data-view="shared"
+                    >
+                        View shared
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 RECENT DOCUMENTS
+            ========================== -->
+
+            <section class="documents-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Recent Documents
+                        </h2>
+
+                        <p>
+                            Your recently added or updated documents.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="#documents"
+                        class="view-all-link"
+                        data-view="documents"
+                    >
+                        View all
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="documents-card"
+                    id="recentDocuments"
+                >
+
+                    <!-- JS will populate -->
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 3h9l4 4v14H6z"></path>
+                                <path d="M14 3v5h5"></path>
+                                <path d="M9 13h6"></path>
+                                <path d="M9 17h4"></path>
+                            </svg>
+
+                        </div>
+
+                        <h3>
+                            No documents yet
+                        </h3>
+
+                        <p>
+                            Upload your first document to get started.
+                        </p>
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="emptyUploadBtn"
+                        >
+                            Upload Document
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <section
+            class="dashboard-content page-view hidden"
+            id="documentsView"
+            data-view-panel="documents"
+            aria-labelledby="documentsHeading"
+        >
+            <header class="view-heading">
+                <div>
+                    <p class="view-kicker">Your vault</p>
+                    <h1 id="documentsHeading">My Documents</h1>
+                    <p class="view-description">Browse and find the records you keep in HomeVault.</p>
+                </div>
+            </header>
+
+            <div class="view-toolbar">
+                <label class="view-search">
+                    <span class="visually-hidden">Search documents</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                        <path d="m16 16 4.5 4.5"></path>
+                    </svg>
+                    <input id="documentSearch" data-document-filter="search" type="search" placeholder="Search by file name">
+                </label>
+                <button class="primary-button" type="button" id="documentsUploadBtn">
+                    Upload Document
+                </button>
+            </div>
+
+            <details class="document-filter-disclosure" id="documentFilterDisclosure">
+                <summary>
+                    <span>Filters</span>
+                    <span class="filter-count hidden" data-filter-count></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                </summary>
+                <div class="document-filter-bar" id="documentFilterBar" data-document-filter-set>
+                    <label class="document-filter-control">
+                        <span>Category</span>
+                        <select data-document-filter="category">
+                            <option value="">All Categories</option>
+                            <option value="Identity">Identity</option>
+                            <option value="Education">Education</option>
+                            <option value="Financial">Financial</option>
+                            <option value="Medical">Medical</option>
+                            <option value="Insurance">Insurance</option>
+                            <option value="Property">Property</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </label>
+                    <label class="document-filter-control">
+                        <span>File type</span>
+                        <select data-document-filter="fileType">
+                            <option value="">All Types</option>
+                            <option value="pdf">PDF</option>
+                            <option value="image">Image</option>
+                        </select>
+                    </label>
+                    <label class="document-filter-control">
+                        <span>Expiry</span>
+                        <select data-document-filter="expiry">
+                            <option value="">All</option>
+                            <option value="expiring">Expiring Soon (Next 30 Days)</option>
+                            <option value="expired">Expired</option>
+                        </select>
+                    </label>
+                </div>
+            </details>
+
+            <div class="documents-card" id="allDocumentsList" aria-live="polite"></div>
+        </section>
+
+
+        <section
+            class="dashboard-content page-view hidden"
+            id="expiryView"
+            data-view-panel="expiry"
+            aria-labelledby="expiryHeading"
+        >
+            <header class="view-heading">
+                <div>
+                    <p class="view-kicker">Stay ahead</p>
+                    <h1 id="expiryHeading">Expiry Alerts</h1>
+                    <p class="view-description">Expired documents and deadlines coming up in the next 30 days.</p>
+                </div>
+            </header>
+
+            <div class="expiry-summary" aria-live="polite">
+                <div class="expiry-summary-item">
+                    <span>Expired</span>
+                    <strong id="expiredCount">0</strong>
+                </div>
+                <div class="expiry-summary-item upcoming">
+                    <span>Due in 30 days</span>
+                    <strong id="upcomingExpiryCount">0</strong>
+                </div>
+            </div>
+
+            <div class="documents-card" id="expiryDocumentsList" aria-live="polite"></div>
+        </section>
+
+
+        <section
+            class="dashboard-content page-view hidden"
+            id="trashView"
+            data-view-panel="trash"
+            aria-labelledby="trashHeading"
+        >
+            <header class="view-heading">
+                <div>
+                    <p class="view-kicker">Recoverable items</p>
+                    <h1 id="trashHeading">Trash</h1>
+                    <p class="view-description">Documents here are hidden from your vault. Restore them whenever you need.</p>
+                </div>
+            </header>
+
+            <div class="documents-card" id="trashDocumentsList" aria-live="polite"></div>
+        </section>
+
+
+        <section
+            class="dashboard-content page-view hidden"
+            id="sharedView"
+            data-view-panel="shared"
+            aria-labelledby="sharedHeading"
+        >
+            <header class="view-heading">
+                <div>
+                    <p class="view-kicker">Family vault</p>
+                    <h1 id="sharedHeading">Shared Documents</h1>
+                    <p class="view-description">Manage documents you shared and view documents shared with you.</p>
+                </div>
+            </header>
+
+            <div class="view-toolbar">
+                <label class="view-search">
+                    <span class="visually-hidden">Search shared documents</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                        <path d="m16 16 4.5 4.5"></path>
+                    </svg>
+                    <input data-document-filter="search" type="search" placeholder="Search by file name">
+                </label>
+            </div>
+            <details class="document-filter-disclosure" id="sharedDocumentFilterDisclosure">
+                <summary>
+                    <span>Filters</span>
+                    <span class="filter-count hidden" data-filter-count></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                </summary>
+                <div class="document-filter-bar" id="sharedDocumentFilterBar" data-document-filter-set>
+                    <label class="document-filter-control">
+                        <span>Show</span>
+                        <select data-document-filter="direction">
+                            <option value="all">All Shared Documents</option>
+                            <option value="shared-with-you">Shared with you</option>
+                            <option value="shared-by-you">Shared by you</option>
+                        </select>
+                    </label>
+                    <label class="document-filter-control">
+                        <span>Category</span>
+                        <select data-document-filter="category">
+                            <option value="">All Categories</option>
+                            <option value="Identity">Identity</option>
+                            <option value="Education">Education</option>
+                            <option value="Financial">Financial</option>
+                            <option value="Medical">Medical</option>
+                            <option value="Insurance">Insurance</option>
+                            <option value="Property">Property</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </label>
+                    <label class="document-filter-control">
+                        <span>Family Member</span>
+                        <select data-document-filter="member">
+                            <option value="">All</option>
+                        </select>
+                    </label>
+                    <label class="document-filter-control">
+                        <span>File type</span>
+                        <select data-document-filter="fileType">
+                            <option value="">All Types</option>
+                            <option value="pdf">PDF</option>
+                            <option value="image">Image</option>
+                        </select>
+                    </label>
+                    <label class="document-filter-control">
+                        <span>Expiry</span>
+                        <select data-document-filter="expiry">
+                            <option value="">All</option>
+                            <option value="expiring">Expiring Soon (Next 30 Days)</option>
+                            <option value="expired">Expired</option>
+                        </select>
+                    </label>
+                </div>
+            </details>
+
+            <div id="sharedByMeSection" data-shared-direction="shared-by-you">
+                <h2 class="shared-documents-subheading">Shared by you</h2>
+                <div class="documents-card view-empty" id="sharedByMeDocumentsList">
+                    <h2>No documents shared yet</h2>
+                    <p>Documents you share with family members will appear here.</p>
+                </div>
+            </div>
+
+            <div id="sharedWithMeSection" data-shared-direction="shared-with-you">
+                <h2 class="shared-documents-subheading">Shared with you</h2>
+                <div class="documents-card view-empty" id="sharedDocumentsList">
+                    <div class="empty-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="18" cy="5" r="2.5"></circle>
+                            <circle cx="6" cy="12" r="2.5"></circle>
+                            <circle cx="18" cy="19" r="2.5"></circle>
+                            <path d="m8.2 10.8 7.5-4.3"></path>
+                            <path d="m8.2 13.2 7.5 4.3"></path>
+                        </svg>
+                    </div>
+                    <h2>Nothing shared yet</h2>
+                    <p>When a family member shares a document with you, it will appear here.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section
+            class="dashboard-content page-view hidden"
+            id="membersView"
+            data-view-panel="members"
+            aria-labelledby="membersHeading"
+        >
+            <header class="view-heading">
+                <div>
+                    <p class="view-kicker">Your people</p>
+                    <h1 id="membersHeading">Family Members</h1>
+                    <p class="view-description" id="membersDescription">People connected to your HomeVault family.</p>
+                </div>
+            </header>
+
+            <section class="family-invite-card" aria-labelledby="familyInviteHeading">
+                <div>
+                    <h2 id="familyInviteHeading">Invite someone to your family</h2>
+                    <p>Share this code with them. They can enter it from “Join a Family”.</p>
+                    <code id="familyCodeDisplay"></code>
+                </div>
+                <button type="button" class="secondary-button" id="copyFamilyCodeBtn">
+                    Copy code
+                </button>
+            </section>
+
+            <div class="member-list" id="familyMembersList" aria-live="polite"></div>
+        </section>
+
+
+        <section
+            class="dashboard-content page-view hidden"
+            id="settingsView"
+            data-view-panel="settings"
+            aria-labelledby="settingsHeading"
+        >
+            <header class="view-heading">
+                <div>
+                    <p class="view-kicker">Account</p>
+                    <h1 id="settingsHeading">Settings</h1>
+                    <p class="view-description">Manage the name shown across your HomeVault account.</p>
+                </div>
+            </header>
+
+            <form class="settings-panel" id="settingsForm">
+                <div class="settings-panel-heading">
+                    <h2>Profile details</h2>
+                    <p>Your email address is managed by your sign-in provider.</p>
+                </div>
+
+                <div class="settings-fields">
+                    <label class="settings-field">
+                        <span>First name</span>
+                        <input id="settingsFirstName" name="firstName" type="text" maxlength="50" required>
+                    </label>
+                    <label class="settings-field">
+                        <span>Last name</span>
+                        <input id="settingsLastName" name="lastName" type="text" maxlength="50">
+                    </label>
+                    <label class="settings-field settings-email">
+                        <span>Email address</span>
+                        <input id="settingsEmail" type="email" disabled>
+                    </label>
+                </div>
+
+                <div class="settings-footer">
+                    <p id="settingsMessage" role="status" aria-live="polite"></p>
+                    <button class="primary-button" type="submit" id="saveSettingsBtn">Save changes</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================
+     MOBILE OVERLAY
+========================== -->
+
+<div
+    class="mobile-overlay hidden"
+    id="mobileOverlay"
+></div>
+
+
+
+<!-- =========================
+     CREATE / JOIN FAMILY MODAL
+========================== -->
+
+<div
+    class="modal-overlay hidden"
+    id="familyModal"
+>
+
+    <div class="modal">
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="familyModal"
+        >
+            ×
+        </button>
+
+        <div class="modal-icon family-modal-icon">
+
+            <svg viewBox="0 0 24 24">
+                <circle cx="9" cy="8" r="3"></circle>
+                <path d="M3.5 20c.5-3.5 2.5-5 5.5-5s5 1.5 5.5 5"></path>
+                <circle cx="17" cy="10" r="2.3"></circle>
+            </svg>
+
+        </div>
+
+        <h2>
+            Family
+        </h2>
+
+        <p class="modal-subtitle">
+            Create a new family or join an existing one.
+        </p>
+
+
+        <div class="family-options">
+
+            <button
+                type="button"
+                class="family-option"
+                id="openCreateFamilyBtn"
+            >
+
+                <span class="option-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 5v14"></path>
+                        <path d="M5 12h14"></path>
+                    </svg>
+
+                </span>
+
+                <span>
+                    <strong>Create Family</strong>
+                    <small>
+                        Create a family and invite members.
+                    </small>
+                </span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="family-option"
+                id="openJoinFamilyBtn"
+            >
+
+                <span class="option-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 12h13"></path>
+                        <path d="m12 7 5 5-5 5"></path>
+                        <path d="M18 5h2v14h-2"></path>
+                    </svg>
+
+                </span>
+
+                <span>
+                    <strong>Join Family</strong>
+                    <small>
+                        Join using a family code.
+                    </small>
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     CREATE FAMILY MODAL
+========================== -->
+
+<div
+    class="modal-overlay hidden"
+    id="createFamilyModal"
+>
+
+    <div class="modal">
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="createFamilyModal"
+        >
+            ×
+        </button>
+
+        <h2>
+            Create a Family
+        </h2>
+
+        <p class="modal-subtitle">
+            Give your family a name to get started.
+        </p>
+
+
+        <form id="createFamilyForm">
+
+            <label for="familyNameInput">
+                Family Name
+            </label>
+
+            <input
+                type="text"
+                id="familyNameInput"
+                placeholder="e.g. Patel Family"
+                maxlength="50"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="primary-button modal-submit"
+            >
+                Create Family
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     JOIN FAMILY MODAL
+========================== -->
+
+<div
+    class="modal-overlay hidden"
+    id="joinFamilyModal"
+>
+
+    <div class="modal">
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="joinFamilyModal"
+        >
+            ×
+        </button>
+
+        <h2>
+            Join a Family
+        </h2>
+
+        <p class="modal-subtitle">
+            Enter the family code shared with you.
+        </p>
+
+
+        <form id="joinFamilyForm">
+
+            <label for="familyCodeInput">
+                Family Code
+            </label>
+
+            <input
+                type="text"
+                id="familyCodeInput"
+                placeholder="Enter family code"
+                maxlength="12"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="primary-button modal-submit"
+            >
+                Join Family
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     LEAVE FAMILY MODAL
+========================== -->
+
+<div
+    class="modal-overlay hidden"
+    id="leaveFamilyModal"
+>
+
+    <div class="modal">
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="leaveFamilyModal"
+        >
+            ×
+        </button>
+
+        <div class="modal-icon danger-modal-icon">
+
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3 22 20H2L12 3z"></path>
+                <path d="M12 9v5"></path>
+                <circle cx="12" cy="17" r=".7"></circle>
+            </svg>
+
+        </div>
+
+        <h2 id="leaveFamilyHeading">
+            Leave Family?
+        </h2>
+
+        <p class="modal-subtitle" id="leaveFamilyDescription">
+            You will lose access to documents shared with this family.
+            Your personal documents will remain safe.
+        </p>
+
+        <p class="leave-family-notice hidden" id="ownerLeaveNotice" role="status">
+            Family owners can't leave directly. Transfer ownership to another family member first.
+        </p>
+
+        <p class="leave-family-error hidden" id="leaveFamilyError" role="alert"></p>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="secondary-button"
+                data-close-modal="leaveFamilyModal"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="danger-button"
+                id="confirmLeaveFamilyBtn"
+            >
+                Leave Family
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    class="modal-overlay hidden"
+    id="removeFamilyMemberModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="removeFamilyMemberHeading"
+>
+    <div class="modal">
+        <h2 id="removeFamilyMemberHeading">Remove family member?</h2>
+        <p class="modal-subtitle">
+            <strong id="removeFamilyMemberName"></strong> will lose access to family-shared documents. Their account and personal documents will remain unaffected.
+        </p>
+        <p class="leave-family-error hidden" id="removeFamilyMemberError" role="alert"></p>
+        <div class="modal-actions">
+            <button
+                type="button"
+                class="secondary-button"
+                data-close-modal="removeFamilyMemberModal"
+            >
+                Cancel
+            </button>
+            <button
+                type="button"
+                class="danger-button"
+                id="confirmRemoveFamilyMemberBtn"
+            >
+                Remove member
+            </button>
+        </div>
+    </div>
+</div>
+
+<div
+    class="modal-overlay hidden"
+    id="familyRemovalNotificationModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="familyRemovalNotificationHeading"
+>
+    <div class="modal">
+        <h2 id="familyRemovalNotificationHeading">Family access ended</h2>
+        <p class="modal-subtitle" id="familyRemovalNotificationText"></p>
+        <p class="leave-family-error hidden" id="familyRemovalNotificationError" role="alert"></p>
+        <div class="modal-actions">
+            <button
+                type="button"
+                class="primary-button"
+                id="dismissFamilyRemovalNotificationBtn"
+            >
+                Dismiss
+            </button>
+        </div>
+    </div>
+</div>
+
+<div
+    class="modal-overlay hidden"
+    id="permanentDeleteConfirmModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="permanentDeleteConfirmHeading"
+>
+    <div class="modal small-modal app-message-modal">
+        <div class="modal-icon danger-modal-icon app-message-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3 22 20H2L12 3z"></path>
+                <path d="M12 9v5"></path>
+                <circle cx="12" cy="17" r=".7"></circle>
+            </svg>
+        </div>
+        <h2 id="permanentDeleteConfirmHeading">Delete permanently?</h2>
+        <p class="modal-subtitle" id="permanentDeleteConfirmText"></p>
+        <div class="modal-actions">
+            <button
+                type="button"
+                class="secondary-button"
+                id="cancelPermanentDeleteBtn"
+            >
+                Cancel
+            </button>
+            <button
+                type="button"
+                class="danger-button"
+                id="confirmPermanentDeleteBtn"
+            >
+                Delete permanently
+            </button>
+        </div>
+    </div>
+</div>
+
+<div
+    class="modal-overlay hidden"
+    id="appMessageModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="appMessageHeading"
+>
+    <div class="modal small-modal app-message-modal">
+        <div class="modal-icon danger-modal-icon app-message-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3 22 20H2L12 3z"></path>
+                <path d="M12 9v5"></path>
+                <circle cx="12" cy="17" r=".7"></circle>
+            </svg>
+        </div>
+        <h2 id="appMessageHeading">Something went wrong</h2>
+        <p class="modal-subtitle" id="appMessageText"></p>
+        <div class="modal-actions">
+            <button
+                type="button"
+                class="primary-button"
+                data-close-modal="appMessageModal"
+            >
+                Got it
+            </button>
+        </div>
+    </div>
+</div>
+
+<div
+    class="modal-overlay hidden"
+    id="uploadSuccessModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="uploadSuccessHeading"
+>
+    <div class="modal small-modal app-message-modal">
+        <div class="modal-icon family-modal-icon app-message-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <path d="m5 12 4 4L19 6"></path>
+            </svg>
+        </div>
+        <h2 id="uploadSuccessHeading">Upload successful</h2>
+        <p class="modal-subtitle" id="uploadSuccessText"></p>
+        <div class="modal-actions">
+            <button
+                type="button"
+                class="primary-button"
+                data-close-modal="uploadSuccessModal"
+            >
+                Done
+            </button>
+        </div>
+    </div>
+</div>
+
+<div
+    class="modal-overlay hidden"
+    id="documentViewerModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="documentViewerTitle"
+>
+    <div class="modal document-viewer-modal">
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="documentViewerModal"
+            aria-label="Close document viewer"
+        >
+            ×
+        </button>
+        <div class="document-viewer-header">
+            <h2 id="documentViewerTitle">Document</h2>
+            <a
+                id="documentViewerDownload"
+                class="primary-button"
+                href="#"
+                rel="noopener"
+            >
+                Download
+            </a>
+        </div>
+        <iframe
+            id="documentViewerFrame"
+            class="document-viewer-frame"
+            title="Document preview"
+        ></iframe>
+    </div>
+</div>
+
+<div
+    class="modal-overlay hidden"
+    id="editDocumentModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="editDocumentHeading"
+>
+    <div class="modal upload-document-modal">
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="editDocumentModal"
+            aria-label="Close document editor"
+        >
+            ×
+        </button>
+        <div class="modal-icon family-modal-icon upload-modal-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"></path>
+            </svg>
+        </div>
+        <h2 id="editDocumentHeading">Edit document details</h2>
+        <p class="modal-subtitle">
+            Update the name, category, expiry date, or who can access this document.
+        </p>
+        <form id="editDocumentForm">
+            <label for="editDocumentNameInput">Document Name</label>
+            <input
+                type="text"
+                id="editDocumentNameInput"
+                maxlength="100"
+                required
+            >
+
+            <label for="editDocumentCategoryInput">Category</label>
+            <select id="editDocumentCategoryInput" required>
+                <option value="Identity">Identity</option>
+                <option value="Education">Education</option>
+                <option value="Financial">Financial</option>
+                <option value="Medical">Medical</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Property">Property</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="editDocumentExpiryInput">
+                Expiry Date
+                <span class="optional-label">Optional</span>
+            </label>
+            <input type="date" id="editDocumentExpiryInput">
+
+            <label for="editDocumentAccessInput">Access</label>
+            <select id="editDocumentAccessInput" required>
+                <option value="private">Only Me</option>
+                <option value="family">Entire Family</option>
+                <option value="selected">Selected Family Members</option>
+            </select>
+
+            <p id="editDocumentFamilyHint" class="upload-access-hint"></p>
+            <fieldset
+                id="editSelectedMembersPicker"
+                class="selected-members-picker hidden"
+            >
+                <legend>Choose family members</legend>
+                <div
+                    id="editSelectedMembersList"
+                    class="selected-members-list"
+                    aria-describedby="editSelectedMembersHint"
+                ></div>
+                <p
+                    id="editSelectedMembersHint"
+                    class="upload-access-hint"
+                    aria-live="polite"
+                ></p>
+            </fieldset>
+
+            <div class="modal-actions">
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close-modal="editDocumentModal"
+                >
+                    Cancel
+                </button>
+                <button type="submit" class="primary-button" id="saveDocumentDetailsBtn">
+                    Save changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- =========================
+     TRANSFER OWNERSHIP MODAL
+========================== -->
+
+<div
+    class="modal-overlay hidden"
+    id="transferFamilyOwnershipModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="transferOwnershipHeading"
+>
+    <div class="modal">
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="transferFamilyOwnershipModal"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <h2 id="transferOwnershipHeading">Transfer family ownership?</h2>
+        <p class="modal-subtitle">
+            <strong id="transferOwnerName"></strong> will become the owner. You will remain a family member with regular member permissions.
+        </p>
+
+        <p class="leave-family-error hidden" id="transferOwnershipError" role="alert"></p>
+
+        <div class="modal-actions">
+            <button
+                type="button"
+                class="secondary-button"
+                data-close-modal="transferFamilyOwnershipModal"
+            >
+                Cancel
+            </button>
+            <button
+                type="button"
+                class="primary-button"
+                id="confirmOwnershipTransferBtn"
+            >
+                Transfer ownership
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- =========================
+     UPLOAD DOCUMENT MODAL
+========================== -->
+
+<div
+    class="modal-overlay hidden"
+    id="uploadDocumentModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="uploadDocumentModalTitle"
+>
+
+    <div class="modal upload-document-modal">
+
+        <!-- Close -->
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="uploadDocumentModal"
+            aria-label="Close upload document modal"
+        >
+            ×
+        </button>
+
+
+        <!-- Header -->
+        <div class="modal-icon family-modal-icon upload-modal-icon">
+
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 16V4"></path>
+                <path d="m7 9 5-5 5 5"></path>
+                <path d="M5 20h14"></path>
+            </svg>
+
+        </div>
+
+
+        <h2 id="uploadDocumentModalTitle">
+            Upload Document
+        </h2>
+
+        <p class="modal-subtitle">
+            Add a document to your personal vault.
+        </p>
+
+
+        <!-- Upload Form -->
+        <form id="uploadDocumentForm">
+
+
+            <!-- Document Name -->
+            <label for="documentNameInput">
+                Document Name
+            </label>
+
+            <input
+                type="text"
+                id="documentNameInput"
+                name="documentName"
+                placeholder="e.g. Aadhaar Card"
+                maxlength="100"
+                required
+            >
+
+
+            <!-- Category -->
+            <label for="documentCategoryInput">
+                Category
+            </label>
+
+            <select
+                id="documentCategoryInput"
+                name="category"
+                required
+            >
+                <option value="" selected disabled>
+                    Select category
+                </option>
+
+                <option value="Identity">
+                    Identity
+                </option>
+
+                <option value="Education">
+                    Education
+                </option>
+
+                <option value="Financial">
+                    Financial
+                </option>
+
+                <option value="Medical">
+                    Medical
+                </option>
+
+                <option value="Insurance">
+                    Insurance
+                </option>
+
+                <option value="Property">
+                    Property
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+            </select>
+
+
+            <!-- Expiry Date -->
+            <label for="documentExpiryInput">
+                Expiry Date
+                <span class="optional-label">
+                    Optional
+                </span>
+            </label>
+
+            <input
+                type="date"
+                id="documentExpiryInput"
+                name="expiryDate"
+            >
+
+
+            <!-- Access -->
+            <label for="documentAccessInput">
+                Access
+            </label>
+
+            <select
+                id="documentAccessInput"
+                name="accessLevel"
+                required
+            >
+
+                <option value="private" selected>
+                    Only Me
+                </option>
+
+                <option value="family">
+                    Entire Family
+                </option>
+
+                <option value="selected">
+                    Selected Family Members
+                </option>
+
+            </select>
+
+
+            <p
+                id="familyAccessHint"
+                class="upload-access-hint"
+            ></p>
+
+            <fieldset
+                id="selectedMembersPicker"
+                class="selected-members-picker hidden"
+            >
+                <legend>Choose family members</legend>
+                <div
+                    id="selectedMembersList"
+                    class="selected-members-list"
+                    aria-describedby="selectedMembersHint"
+                ></div>
+                <p
+                    id="selectedMembersHint"
+                    class="upload-access-hint"
+                    aria-live="polite"
+                ></p>
+            </fieldset>
+
+
+            <!-- File -->
+            <label for="documentFileInput">
+                Document File
+            </label>
+
+            <div class="file-upload-box">
+
+                <input
+                    type="file"
+                    id="documentFileInput"
+                    name="documentFile"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    required
+                >
+
+                <div class="file-upload-content">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M12 16V4"></path>
+                        <path d="m7 9 5-5 5 5"></path>
+                        <path d="M5 20h14"></path>
+                    </svg>
+
+                    <strong>
+                        Choose a document
+                    </strong>
+
+                    <span>
+                        PDF, JPG, JPEG or PNG
+                    </span>
+
+                    <span>
+                        Maximum file size: 10 MB
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p
+                class="file-selected-name"
+                id="selectedFileName"
+            >
+                No file selected
+            </p>
+
+
+            <!-- Status -->
+            <p
+                id="uploadDocumentMessage"
+                class="upload-document-message"
+                role="status"
+                aria-live="polite"
+            ></p>
+
+
+            <!-- Actions -->
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    data-close-modal="uploadDocumentModal"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="confirmUploadDocumentBtn"
+                >
+                    Upload Document
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     LOGOUT MODAL
+========================== -->
+
+<div
+    class="modal-overlay hidden"
+    id="logoutModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="logoutModalTitle"
+    aria-describedby="logoutModalDescription"
+>
+
+    <div class="modal small-modal logout-modal">
+
+        <button
+            type="button"
+            class="modal-close"
+            data-close-modal="logoutModal"
+        >
+            ×
+        </button>
+
+        <div class="modal-icon family-modal-icon logout-modal-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+                <path d="M10 17l5-5-5-5"></path>
+                <path d="M15 12H3"></path>
+                <path d="M21 3v18"></path>
+            </svg>
+        </div>
+
+        <h2>
+            <span id="logoutModalTitle">Logout?</span>
+        </h2>
+
+        <p class="modal-subtitle" id="logoutModalDescription">
+            Are you sure you want to logout from HomeVault?
+        </p>
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="secondary-button"
+                data-close-modal="logoutModal"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="danger-button"
+                id="confirmLogoutBtn"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script
+    type="module"
+    src="../js/dashboard.js"
+></script>
+
+</body>
+</html>

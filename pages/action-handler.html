@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="action-handler-document">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HomeVault</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/auth.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/action-handler.css"
+    >
+
+</head>
+
+
+<body class="action-handler-page">
+
+    <main class="auth-page action-auth-page">
+
+        <section class="auth-brand">
+
+            <a href="../index.html" class="auth-logo">
+                <img src="../assets/logo/homevault-logo.png" alt="HomeVault">
+            </a>
+
+            <div class="brand-content">
+                <span class="auth-eyebrow">Account security</span>
+                <h1>Protect your <span>HomeVault account.</span></h1>
+                <p>
+                    Keep your personal and family documents secure
+                    with account access you control.
+                </p>
+
+                <div class="brand-points">
+                    <div class="brand-point">
+                        <div class="brand-point-icon">✓</div>
+                        <span>Protect your account</span>
+                    </div>
+                    <div class="brand-point">
+                        <div class="brand-point-icon">✓</div>
+                        <span>Keep your documents secure</span>
+                    </div>
+                    <div class="brand-point">
+                        <div class="brand-point-icon">✓</div>
+                        <span>Continue using HomeVault</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="brand-footer">Family &amp; Personal Document Organizer</p>
+        </section>
+
+        <section class="auth-form-section">
+            <div class="auth-card">
+                <div class="mobile-logo">
+                    <a href="../index.html">
+                        <img src="../assets/logo/homevault-logo.png" alt="HomeVault">
+                    </a>
+                </div>
+
+
+            <!-- ==============================
+                 LOADING STATE
+            =============================== -->
+
+            <div
+                id="loadingState"
+                class="action-state active"
+            >
+
+                <div class="loader"></div>
+
+                <h1>
+                    Please wait...
+                </h1>
+
+                <p>
+                    We're securely processing your request.
+                </p>
+
+            </div>
+
+
+            <!-- ==============================
+                 RESET PASSWORD
+            =============================== -->
+
+            <div
+                id="resetState"
+                class="action-state"
+            >
+
+                <div class="auth-heading">
+                    <span class="auth-form-eyebrow">Password recovery</span>
+                    <h2>Reset your password</h2>
+                    <p>Enter a new password for your HomeVault account.</p>
+                </div>
+
+
+                <form id="resetPasswordForm" class="auth-form">
+
+                    <div class="form-group">
+
+                        <label for="newPassword">
+                            New Password
+                        </label>
+
+                        <div class="password-field">
+
+                            <input
+                                type="password"
+                                id="newPassword"
+                                placeholder="Enter your new password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="newPassword"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm New Password
+                        </label>
+
+                        <div class="password-field">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Re-enter your new password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-target="confirmPassword"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <p
+                        id="resetError"
+                        class="form-message"
+                        aria-live="polite"
+                    ></p>
+
+
+                    <div class="password-requirements">
+                        <span class="requirement-icon" aria-hidden="true">i</span>
+                        <p>Use at least 6 characters for your new password.</p>
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        id="resetPasswordButton"
+                        class="auth-submit"
+                    >
+                        <span>Reset Password</span>
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <div class="auth-divider">
+                    <span></span>
+                    <p>Remember your password?</p>
+                    <span></span>
+                </div>
+
+
+                <a href="login.html" class="login-button">
+                    Back to Login
+                </a>
+
+            </div>
+
+
+            <!-- ==============================
+                 PASSWORD RESET SUCCESS
+            =============================== -->
+
+            <div
+                id="resetSuccessState"
+                class="action-state"
+            >
+
+                <div class="state-icon success-icon">
+                    ✓
+                </div>
+
+                <h1>
+                    Password reset successfully!
+                </h1>
+
+                <p>
+                    Your HomeVault password has been updated successfully.
+                </p>
+
+
+                <a
+                    href="./login.html"
+                    class="primary-button link-button"
+                >
+                    Go to Login
+                    <span>→</span>
+                </a>
+
+            </div>
+
+
+            <!-- ==============================
+                 EMAIL VERIFICATION
+            =============================== -->
+
+            <div
+                id="verifyState"
+                class="action-state"
+            >
+
+                <div class="auth-heading">
+                    <span class="auth-form-eyebrow">Email confirmation</span>
+                    <div class="state-icon email-icon" aria-hidden="true">
+                        ✉
+                    </div>
+                    <h2>Confirm your email</h2>
+                    <p>You’re one step away from finishing your HomeVault account setup.</p>
+                </div>
+
+
+                <div class="verification-note">
+                    <span class="verification-note-icon" aria-hidden="true">✓</span>
+                    <p>This secure link can only be used once.</p>
+                </div>
+
+
+                <button
+                    type="button"
+                    id="verifyEmailButton"
+                    class="auth-submit"
+                    aria-live="polite"
+                >
+                    <span>Confirm Email Address</span>
+                    <span>→</span>
+                </button>
+
+            </div>
+
+
+            <!-- ==============================
+                 VERIFICATION SUCCESS
+            =============================== -->
+
+            <div
+                id="verifySuccessState"
+                class="action-state"
+            >
+
+                <div class="state-icon success-icon" aria-hidden="true">
+                    ✓
+                </div>
+
+                <div class="auth-heading">
+                    <span class="auth-form-eyebrow">Verification complete</span>
+                    <h2>Email verified!</h2>
+                    <p>Your email is confirmed and your HomeVault account is ready to use.</p>
+                </div>
+
+
+                <a
+                    href="./login.html"
+                    class="primary-button link-button"
+                >
+                    Continue to Login
+                    <span>→</span>
+                </a>
+
+            </div>
+
+
+            <!-- ==============================
+                 ERROR
+            =============================== -->
+
+            <div
+                id="errorState"
+                class="action-state"
+            >
+
+                <div class="state-icon error-icon">
+                    !
+                </div>
+
+                <h1 id="errorTitle">
+                    Something went wrong
+                </h1>
+
+                <p id="errorMessage">
+                    This link is invalid or has expired.
+                </p>
+
+
+                <a
+                    href="./login.html"
+                    class="secondary-button link-button"
+                >
+                    Back to Login
+                </a>
+
+            </div>
+
+
+                <p class="auth-note">Secure. Organize. Protect.</p>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script
+        type="module"
+        src="../js/auth/action-handler.js"
+    ></script>
+
+</body>
+
+</html>

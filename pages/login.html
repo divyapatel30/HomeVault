@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | HomeVault</title>
+
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <!-- Decorative background -->
+        <div class="register-glow register-glow-one"></div>
+        <div class="register-glow register-glow-two"></div>
+
+
+        <!-- Left Branding -->
+        <section class="auth-brand">
+
+            <a href="../index.html" class="auth-logo">
+                <img src="../assets/logo/homevault-logo.png" alt="HomeVault">
+            </a>
+
+
+            <div class="brand-content">
+
+                <span class="auth-eyebrow">
+                    Welcome back
+                </span>
+
+
+                <h1>
+                    Your documents,
+                    <span>always within reach.</span>
+                </h1>
+
+
+                <p>
+                    Sign in to access your personal and family
+                    documents, manage sharing, and stay on top
+                    of important expiry dates.
+                </p>
+
+
+                <div class="brand-points">
+
+                    <div class="brand-point">
+
+                        <div class="brand-point-icon">
+                            ✓
+                        </div>
+
+                        <span>
+                            Access your documents securely
+                        </span>
+
+                    </div>
+
+
+                    <div class="brand-point">
+
+                        <div class="brand-point-icon">
+                            ✓
+                        </div>
+
+                        <span>
+                            Stay connected with your family
+                        </span>
+
+                    </div>
+
+
+                    <div class="brand-point">
+
+                        <div class="brand-point-icon">
+                            ✓
+                        </div>
+
+                        <span>
+                            Never miss important expiry dates
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p class="brand-footer">
+                Family & Personal Document Organizer
+            </p>
+
+        </section>
+
+
+        <!-- Login -->
+        <section class="auth-form-section">
+
+            <div class="auth-card">
+
+
+                <!-- Mobile logo -->
+                <div class="mobile-logo">
+
+                    <a href="../index.html">
+
+                        <img src="../assets/logo/homevault-logo.png" alt="HomeVault">
+
+                    </a>
+
+                </div>
+
+
+                <!-- Heading -->
+                <div class="auth-heading">
+
+                    <span class="auth-form-eyebrow">
+                        Secure access
+                    </span>
+
+                    <h2>
+                        Welcome back
+                    </h2>
+
+                    <p>
+                        Log in to continue to your HomeVault.
+                    </p>
+
+                </div>
+
+
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form">
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input type="email" id="email" name="email" placeholder="Enter your email address"
+                            autocomplete="username" required>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="password-field">
+
+                            <input type="password" id="password" name="password" placeholder="Enter your password"
+                                autocomplete="current-password" required>
+
+                            <button type="button" class="password-toggle" data-target="password">
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Options -->
+                    <div class="login-options">
+
+                        <label class="remember-me">
+
+                            <input type="checkbox" id="rememberMe">
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                        <!-- Forgot Password -->
+                        <a href="#" class="forgot-password" id="forgotPassword">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <!-- Login Status -->
+                    <p id="loginMessage" class="form-message" aria-live="polite" hidden></p>
+
+
+                    <!-- Submit -->
+                    <button type="submit" class="auth-submit">
+                        <span>Log In</span>
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <!-- Security note -->
+                <div class="security-note">
+
+                    <div class="security-note-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Your documents stay under your control.
+                        </strong>
+
+                        <p>
+                            HomeVault protects access to your account.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Register -->
+                <div class="auth-divider">
+
+                    <span></span>
+
+                    <p>
+                        Don't have an account?
+                    </p>
+
+                    <span></span>
+
+                </div>
+
+
+                <a href="register.html" class="login-button">
+                    Create an Account
+                </a>
+
+
+                <p class="auth-note">
+                    Secure. Organize. Protect.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+    <!-- =================================================
+     FORGOT PASSWORD MODAL
+================================================= -->
+
+<div
+    id="forgotPasswordModal"
+    class="forgot-password-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="forgot-password-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="forgotPasswordTitle"
+    >
+
+        <button
+            type="button"
+            id="closeForgotPassword"
+            class="forgot-close"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+        <!-- REQUEST SECTION -->
+
+        <div id="forgotRequestSection">
+
+            <div class="forgot-icon">
+                ✉
+            </div>
+
+            <h3 id="forgotPasswordTitle">
+                Reset your password
+            </h3>
+
+            <p>
+                Enter your email address and we'll
+                send you a password reset link.
+            </p>
+
+
+            <div class="forgot-input-group">
+
+                <label for="resetEmail">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="resetEmail"
+                    name="resetEmail"
+                    placeholder="Enter your email address"
+                    autocomplete="email"
+                >
+
+            </div>
+
+
+            <p
+                id="resetEmailError"
+                class="reset-email-error"
+                aria-live="polite"
+            ></p>
+
+
+            <div class="forgot-actions">
+
+                <button
+                    type="button"
+                    id="cancelForgotPassword"
+                    class="forgot-cancel"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    id="sendResetLink"
+                    class="forgot-submit"
+                >
+                    Send Reset Link
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUCCESS SECTION -->
+
+        <div
+            id="forgotSuccessSection"
+            class="forgot-success-section"
+        >
+
+            <div class="forgot-success-icon">
+                ✓
+            </div>
+
+
+            <h3>
+                Check your email
+            </h3>
+
+
+            <p>
+                If an account is associated with this email,
+                we've sent a password reset link to:
+            </p>
+
+
+            <div
+                class="reset-email-display"
+                id="resetEmailDisplay"
+            ></div>
+
+
+            <div class="forgot-help">
+
+                <strong>
+                    Didn't receive the email?
+                </strong>
+
+                <ul>
+
+                    <li>
+                        Check that the email address above is correct.
+                    </li>
+
+                    <li>
+                        Check your Spam or Junk folder.
+                    </li>
+
+                    <li>
+                        You can request another reset email below.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="forgot-actions">
+
+                <button
+                    type="button"
+                    id="resendResetLink"
+                    class="forgot-submit"
+                >
+                    Resend Reset Link
+                </button>
+
+                <button
+                    type="button"
+                    id="doneForgotPassword"
+                    class="forgot-cancel"
+                >
+                    Done
+                </button>
+
+            </div>
+
+
+            <p
+                id="resendCountdown"
+                class="resend-countdown"
+            ></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- Password Toggle -->
+    <script>
+
+        const passwordToggleButtons =
+            document.querySelectorAll(".password-toggle");
+
+
+        passwordToggleButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const input =
+                    document.getElementById(
+                        button.dataset.target
+                    );
+
+
+                if (input.type === "password") {
+
+                    input.type = "text";
+                    button.textContent = "Hide";
+
+                } else {
+
+                    input.type = "password";
+                    button.textContent = "Show";
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+
+    <!-- Login JS -->
+    <script type="module" src="../js/auth/login.js"></script>
+    <!-- =====================================================
+     AUTH STATUS MODAL
+===================================================== -->
+
+    <div id="authModal" class="auth-modal" aria-hidden="true">
+        <div class="auth-modal-overlay"></div>
+
+        <div class="auth-modal-box" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+
+            <!-- Animated Icon -->
+            <div id="authModalIcon" class="auth-modal-icon">
+                <div class="modal-spinner"></div>
+            </div>
+
+            <!-- Title -->
+            <h3 id="authModalTitle">
+                Signing you in...
+            </h3>
+
+            <!-- Description -->
+            <p id="authModalText">
+                Please wait while we verify your account.
+            </p>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

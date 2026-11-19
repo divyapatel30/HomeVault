@@ -1,0 +1,931 @@
+/* =========================================================
+   HOMEVAULT ACTION HANDLER
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3faf7 0%,
+            #eef6f3 50%,
+            #f7faf9 100%
+        );
+
+    color: #16233a;
+
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.action-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px 20px;
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.action-card {
+
+    width: 100%;
+
+    max-width: 470px;
+
+    background: #ffffff;
+
+    border-radius: 24px;
+
+    padding: 42px 42px 30px;
+
+    box-shadow:
+        0 20px 60px rgba(22, 35, 58, 0.10);
+
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 38px;
+
+}
+
+
+.brand-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e7f5ef;
+
+    font-size: 20px;
+
+}
+
+
+.brand-name {
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+.brand-home {
+
+    color: #17243a;
+
+}
+
+
+.brand-vault {
+
+    color: #2fa77a;
+
+}
+
+
+/* =========================================================
+   STATES
+========================================================= */
+
+.action-state {
+
+    display: none;
+
+    text-align: center;
+
+}
+
+
+.action-state.active {
+
+    display: block;
+
+}
+
+
+.action-state h1 {
+
+    margin-top: 18px;
+
+    margin-bottom: 10px;
+
+    font-size: 27px;
+
+    line-height: 1.25;
+
+    color: #17243a;
+
+}
+
+
+.action-state > p {
+
+    color: #667085;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 28px;
+
+}
+
+
+/* =========================================================
+   STATE ICON
+========================================================= */
+
+.state-icon {
+
+    width: 62px;
+
+    height: 62px;
+
+    margin: 0 auto;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+}
+
+
+.success-icon {
+
+    background: #e8f7f0;
+
+    color: #2fa77a;
+
+}
+
+
+.error-icon {
+
+    background: #fff0f0;
+
+    color: #d64545;
+
+}
+
+
+.email-icon {
+
+    background: #e6f4f2;
+
+    color: #287977;
+
+}
+
+
+.auth-heading .email-icon {
+
+    margin: 4px auto 12px;
+
+}
+
+
+.verification-note {
+
+    margin: 0 0 18px;
+
+    padding: 12px 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    border: 1px solid rgba(51, 143, 142, 0.16);
+
+    border-radius: 12px;
+
+    background: #f3faf7;
+
+    text-align: left;
+
+}
+
+
+.verification-note-icon,
+.requirement-icon {
+
+    width: 24px;
+
+    height: 24px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #dff3ea;
+
+    color: #2f9470;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.verification-note p {
+
+    color: #526574;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+}
+
+
+.password-requirements {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 9px 11px;
+
+    border: 1px solid rgba(51, 143, 142, 0.14);
+
+    border-radius: 10px;
+
+    background: rgba(232, 245, 244, 0.62);
+
+    text-align: left;
+
+}
+
+
+.requirement-icon {
+
+    width: 20px;
+
+    height: 20px;
+
+    background: rgba(51, 143, 142, 0.12);
+
+    color: #287977;
+
+    font-size: 11px;
+
+}
+
+
+.password-requirements p {
+
+    color: #627086;
+
+    font-size: 11px;
+
+    line-height: 1.45;
+
+}
+
+
+.action-state .auth-heading {
+
+    margin-bottom: 10px;
+
+}
+
+
+.action-state .auth-form {
+
+    gap: 8px;
+
+}
+
+
+.action-state .auth-form .form-group {
+
+    margin-bottom: 0;
+
+}
+
+
+.action-state .auth-form .form-message:empty {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader {
+
+    width: 42px;
+
+    height: 42px;
+
+    margin: 10px auto 25px;
+
+    border: 4px solid #e5eee9;
+
+    border-top-color: #2fa77a;
+
+    border-radius: 50%;
+
+    animation: spin 0.8s linear infinite;
+
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group {
+
+    text-align: left;
+
+    margin-bottom: 20px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #344054;
+
+}
+
+
+.password-field {
+
+    position: relative;
+
+}
+
+
+.password-field input {
+
+    width: 100%;
+
+    height: 50px;
+
+    border: 1px solid #d9e2de;
+
+    border-radius: 11px;
+
+    padding: 0 70px 0 15px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    color: #17243a;
+
+    background: #fbfdfc;
+
+    transition: 0.2s ease;
+
+}
+
+
+.password-field input:focus {
+
+    border-color: #2fa77a;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(47, 167, 122, 0.10);
+
+}
+
+
+.password-toggle {
+
+    position: absolute;
+
+    right: 12px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: #2f9470;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.form-error {
+
+    min-height: 20px;
+
+    margin-top: -6px;
+
+    margin-bottom: 10px;
+
+    color: #d64545 !important;
+
+    font-size: 12px !important;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-button,
+.secondary-button {
+
+    width: 100%;
+
+    min-height: 50px;
+
+    border-radius: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+.primary-button {
+
+    border: none;
+
+    background: #17243a;
+
+    color: #ffffff;
+
+}
+
+
+.primary-button:hover {
+
+    background: #223451;
+
+    transform: translateY(-1px);
+
+}
+
+
+.primary-button:disabled {
+
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+.secondary-button {
+
+    border: 1px solid #d5dfda;
+
+    background: #ffffff;
+
+    color: #344054;
+
+}
+
+
+.secondary-button:hover {
+
+    border-color: #2fa77a;
+
+    color: #2f9470;
+
+}
+
+
+.link-button {
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   SECURITY NOTE
+========================================================= */
+
+.security-note {
+
+    margin-top: 32px;
+
+    padding: 14px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 11px;
+
+    border-radius: 12px;
+
+    background: #f3faf7;
+
+    text-align: left;
+
+}
+
+
+.security-icon {
+
+    width: 25px;
+
+    height: 25px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #dff3ea;
+
+    color: #2fa77a;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.security-note strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #344054;
+
+    font-size: 12px;
+
+}
+
+
+.security-note p {
+
+    color: #667085;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer-text {
+
+    margin-top: 24px;
+
+    text-align: center;
+
+    color: #98a2b3;
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .action-page {
+
+        padding: 20px 14px;
+
+    }
+
+
+    .action-card {
+
+        padding: 32px 24px 25px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .brand {
+
+        margin-bottom: 30px;
+
+    }
+
+
+    .action-state h1 {
+
+        font-size: 24px;
+
+    }
+
+}
+
+
+@media (min-width: 951px) {
+
+    .auth-form-section .auth-card {
+
+        max-width: 560px;
+
+        padding: 36px 40px 34px;
+
+    }
+
+}
+
+
+/* =========================================================
+   ACTION HANDLER RESPONSIVE LAYOUT
+========================================================= */
+
+html.action-handler-document,
+body.action-handler-page {
+
+    height: auto;
+
+    min-height: 100%;
+
+    overflow-x: hidden;
+
+    overflow-y: auto;
+
+}
+
+
+.action-auth-page {
+
+    min-height: 100vh;
+
+}
+
+
+@media (min-width: 1101px) {
+
+    .action-auth-page {
+
+        grid-template-columns: minmax(0, 0.9fr) minmax(390px, 1.1fr);
+
+    }
+
+}
+
+
+@media (min-width: 601px) and (max-width: 1100px) {
+
+    .action-auth-page {
+
+        grid-template-columns: minmax(0, 1fr);
+
+    }
+
+    .action-auth-page .auth-brand {
+
+        min-height: auto;
+
+        padding: 18px 28px 0;
+
+        justify-content: center;
+
+    }
+
+    .action-auth-page .brand-content,
+    .action-auth-page .brand-footer {
+
+        display: none;
+
+    }
+
+    .action-auth-page .auth-logo img {
+
+        width: 160px;
+
+    }
+
+    .action-auth-page .auth-form-section {
+
+        min-height: calc(100vh - 90px);
+
+        padding: 18px 24px 28px;
+
+    }
+
+    .action-auth-page .auth-card {
+
+        max-width: 560px;
+
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .action-auth-page {
+
+        grid-template-columns: minmax(0, 1fr);
+
+    }
+
+    .action-auth-page .auth-brand {
+
+        min-height: auto;
+
+        padding: 14px 20px 0;
+
+        justify-content: center;
+
+    }
+
+    .action-auth-page .brand-content,
+    .action-auth-page .brand-footer {
+
+        display: none;
+
+    }
+
+    .action-auth-page .auth-logo img {
+
+        width: 160px;
+
+    }
+
+    .action-auth-page .auth-form-section {
+
+        min-height: calc(100vh - 72px);
+
+        padding: 12px 20px 24px;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .action-auth-page .auth-brand {
+
+        display: none;
+
+    }
+
+    .action-auth-page .auth-form-section {
+
+        min-height: 100vh;
+
+        padding: 18px 16px;
+
+    }
+
+    .action-auth-page .auth-card {
+
+        padding: 24px 22px 21px;
+
+    }
+
+    .action-auth-page .mobile-logo {
+
+        display: block;
+
+        margin-bottom: 16px;
+
+        text-align: center;
+
+    }
+
+}

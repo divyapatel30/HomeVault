@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account - HomeVault</title>
+
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <!-- Left Branding Section -->
+        <section class="auth-brand">
+
+            <a href="../index.html" class="auth-logo">
+                <img src="../assets/logo/homevault-logo.png" alt="HomeVault">
+            </a>
+
+            <div class="brand-content">
+
+                <span class="auth-eyebrow">
+                    Secure. Organize. Protect.
+                </span>
+
+                <h1>
+                    One home for
+                    <span>every important document.</span>
+                </h1>
+
+                <p>
+                    Create your HomeVault account and keep your
+                    personal and family documents organized in
+                    one secure place.
+                </p>
+
+                <div class="brand-points">
+
+                    <div class="brand-point">
+                        <div class="brand-point-icon">✓</div>
+                        <span>Organize your important documents</span>
+                    </div>
+
+                    <div class="brand-point">
+                        <div class="brand-point-icon">✓</div>
+                        <span>Share documents with your family</span>
+                    </div>
+
+                    <div class="brand-point">
+                        <div class="brand-point-icon">✓</div>
+                        <span>Keep track of expiry dates</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="brand-footer">
+                Family & Personal Document Organizer
+            </p>
+
+        </section>
+
+
+        <!-- Right Form Section -->
+        <section class="auth-form-section">
+
+            <div class="auth-card">
+
+                <div class="mobile-logo">
+                    <a href="../index.html">
+                        <img src="../assets/logo/homevault-logo.png" alt="HomeVault">
+                    </a>
+                </div>
+
+                <div class="auth-heading">
+
+                    <h2>Create your account</h2>
+
+                    <p>
+                        Start organizing your documents with HomeVault.
+                    </p>
+
+                </div>
+
+
+                <form id="registerForm" class="auth-form">
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" autocomplete="name"
+                            required>
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input type="email" id="email" name="email" placeholder="Enter your email address"
+                            autocomplete="email" required>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="password-field">
+
+                            <input type="password" id="password" name="password" placeholder="Create a password"
+                                autocomplete="new-password" required>
+
+                            <button type="button" class="password-toggle" data-target="password"
+                                aria-label="Show password">
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="password-field">
+
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                placeholder="Re-enter your password" autocomplete="new-password" required>
+
+                            <button type="button" class="password-toggle" data-target="confirmPassword"
+                                aria-label="Show password">
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Status Popup Trigger -->
+                    <p id="message" class="form-message" aria-live="polite" hidden></p>
+                    <!-- Submit -->
+                    <button type="submit" class="auth-submit">
+                        Create Account
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <div class="auth-divider">
+                    <span></span>
+                    <p>Already have an account?</p>
+                    <span></span>
+                </div>
+
+
+                <a href="login.html" class="login-button">
+                    Log In
+                </a>
+
+
+                <p class="auth-note">
+                    By creating an account, you can securely manage
+                    your personal and family documents.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const passwordToggleButtons =
+            document.querySelectorAll(".password-toggle");
+
+        passwordToggleButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const input =
+                    document.getElementById(
+                        button.dataset.target
+                    );
+
+                if (input.type === "password") {
+
+                    input.type = "text";
+
+                    button.textContent = "Hide";
+
+                } else {
+
+                    input.type = "password";
+
+                    button.textContent = "Show";
+                }
+
+            });
+
+        });
+
+    </script>
+
+
+    <script type="module" src="../js/auth/register.js"></script>
+    <!-- =====================================================
+     AUTH STATUS MODAL
+===================================================== -->
+
+<div
+    id="authModal"
+    class="auth-modal"
+    aria-hidden="true"
+>
+    <div class="auth-modal-overlay"></div>
+
+    <div
+        class="auth-modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="authModalTitle"
+    >
+
+        <!-- Animated Icon -->
+        <div
+            id="authModalIcon"
+            class="auth-modal-icon"
+        >
+            <div class="modal-spinner"></div>
+        </div>
+
+        <!-- Title -->
+        <h3 id="authModalTitle">
+            Creating your account...
+        </h3>
+
+        <!-- Description -->
+        <p id="authModalText">
+            Please wait while we securely create your account.
+        </p>
+
+    </div>
+</div>
+
+</body>
+
+</html>
